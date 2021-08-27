@@ -1,0 +1,26 @@
+persistence/DatabaseManager.java
+ persistence.DatabaseManager
+menu/SubMenuOptions.java
+ menu.SubMenuOptions
+model/UserReview.java
+ model.UserReview
+persistence/RepositoryRating.java
+ persistence.RepositoryRating
+model/Rating.java
+ model.Rating
+model/Book.java
+ model.Book
+model/Category.java
+ model.Category
+menu/MainMenu.java
+ menu.MainMenu
+model/User.java
+ model.User
+util/DBUtil.java
+ util.DBUtil
+persistence/RepositoryCustomer.java
+ persistence.RepositoryCustomer
+model/Customer.java
+ model.Customer
+menu/MenuCustomer.java
+ menu.MenuCustomer
