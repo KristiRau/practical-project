@@ -1,10 +1,9 @@
 package menu;
 
-import model.Customer;
-import persistence.RepositoryCustomer;
-
 import java.util.List;
 import java.util.Scanner;
+import model.Customer;
+import persistence.RepositoryCustomer;
 
 public class MenuCustomer {
     RepositoryCustomer repositoryCustomer = new RepositoryCustomer();
