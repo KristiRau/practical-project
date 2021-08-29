@@ -4,23 +4,24 @@ import java.util.Scanner;
 
 public class SubMenuOptions {
 
-    private MenuCustomer menuCustomer;
+    private MenuUser menuUser;
+    private MenuUserReview menuUserReview;
 
     public SubMenuOptions() {
-        this.menuCustomer = new MenuCustomer();
+        this.menuUser = new MenuUser();
+        this.menuUserReview = new MenuUserReview();
     }
 
     private int menuOptions(Scanner input) {
-        System.out.println("\n/***************************************************/");
+        System.out.println("\n====================================================");
         System.out.println("Select the menu option: ");
-        System.out.println("-------------------------\n");
         System.out.println();
-        System.out.println("1: Sub Menu - Customer");
-        System.out.println("2: Sub Menu - Delivery");
+        System.out.println("1: Sub Menu - User");
+        System.out.println("2: Sub Menu - User Review");
         System.out.println("3: Sub Menu - <NAME>");
         System.out.println("4: Sub Menu - <NAME>");
         System.out.println("100 - Quit");
-        System.out.println("\n/***************************************************/");
+        System.out.println("\n====================================================");
 
         return input.nextInt();
     }
@@ -32,9 +33,10 @@ public class SubMenuOptions {
             userChoice = menuOptions(input);
             switch (userChoice) {
                 case 1:
-                    this.menuCustomer.menuChoice(input);
+                    this.menuUser.menuChoice(input);
                     break;
                 case 2:
+                    this.menuUserReview.menuChoice(input);
                     break;
                 case 3:
                     break;
@@ -54,13 +56,13 @@ public class SubMenuOptions {
 
                     break;
                 case 100:
-                    input.close();
+
                     break;
                 default:
                     System.out.println("\nSorry, please enter valid Option");
                     menuOptions(input);
                     break;
-            }// End of switch statement
+            }
         } while (userChoice != 100);
         System.out.println("Closing system...");
         System.out.println("Thank you. Good Bye.");

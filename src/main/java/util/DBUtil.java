@@ -17,7 +17,7 @@ public class DBUtil {
         try(Connection conn = DriverManager.getConnection(dbUrl, userDB, passwordDB);
             Statement stmt = conn.createStatement();
         ) {
-            String sql = "CREATE DATABASE IF NOT EXISTS db_pratical_project_jdbc";
+            String sql = "CREATE DATABASE IF NOT EXISTS db_pratical_project_jdbc_1";
             stmt.executeUpdate(sql);
             System.out.println("Database created successfully...");
         } catch (SQLException e) {
@@ -28,7 +28,7 @@ public class DBUtil {
     public static Connection getDBConnection() {
         Connection connection = null;
         // JDBC driver name and database URL
-        String dbUrl = "jdbc:mysql://localhost:3306/db_pratical_project_jdbc?serverTimezone=UTC";
+        String dbUrl = "jdbc:mysql://localhost:3306/db_pratical_project_jdbc_1?serverTimezone=UTC";
 
         try {
             // Register JDBC driver

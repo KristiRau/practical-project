@@ -1,12 +1,16 @@
 package persistence;
 
+
+
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DatabaseManager {
+
 
     private Connection connection;
 
@@ -15,26 +19,6 @@ public class DatabaseManager {
         connection = DBUtil.getDBConnection();
     }
 
-    private void createTableRating() {
-        String sql = "CREATE TABLE IF NOT EXISTS rating (\n"
-                + "	rating_id int NOT NULL AUTO_INCREMENT,\n"
-                + "	rating_book_id INT NOT NULL,\n"
-                + "	rating_user_id INT NOT NULL,\n"
-                + "	rating_score INT DEFAULT NULL,\n"
-                + "	rating_comment varchar(400) DEFAULT NULL,\n"
-                + " CONSTRAINT book_fk FOREIGN KEY (rating_book_id) REFERENCES book(book_id),\n"
-                + " CONSTRAINT rating_user_fk FOREIGN KEY (rating_user_id) REFERENCES user(user_id),\n"
-                + "	 PRIMARY KEY (rating_id)\n"
-                + ");";
-
-        try {
-            Statement stmt = connection.createStatement();
-            // create a new table
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     private void createTableUserReview() {
         String sql = "CREATE TABLE IF NOT EXISTS user_review (\n"
@@ -145,6 +129,5 @@ public class DatabaseManager {
         createTableCategory();
         createTableBook();
         createTableUserReview();
-        createTableRating();
     }
 }
