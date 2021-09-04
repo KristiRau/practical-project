@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -82,15 +83,16 @@ public class RepositoryUser {
         }
     }
 
-    public void addUser(String username, String password, String firstName, String lastName, String email) {
-        String sql = "INSERT INTO user(username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
+    public void addUser(String username, String password, String firstName, String lastName, Date dateOfBirth, String email) {
+        String sql = "INSERT INTO user(username, password, first_name, last_name, date_of_birth, email) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             pstmt = DBUtil.getDBConnection().prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             pstmt.setString(3, firstName);
             pstmt.setString(4, lastName);
-            pstmt.setString(5, email);
+            pstmt.setDate(5, dateOfBirth);
+            pstmt.setString(6, email);
             pstmt.execute();
             System.out.println("User added");
         } catch (SQLException e) {

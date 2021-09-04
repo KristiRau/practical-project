@@ -3,6 +3,7 @@ package menu;
 import model.User;
 import persistence.RepositoryUser;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -46,7 +47,7 @@ public class MenuUser {
 //                    menuUpdatePhoneNumberByCustomerId(input);
 //                    break;
                 case 100:
-                    MainMenu.getMainMenu();
+
                     break;
                 default:
                     System.out.println("\nSorry, please enter valid Option");
@@ -92,6 +93,15 @@ public class MenuUser {
             lastName = input.next();
         }
 
+        System.out.print("Enter date of birth (YYYY/MM/DD): ");
+        Date dateOfBirth = null;
+        try {
+            dateOfBirth = Date.valueOf(input.next());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         System.out.print("Enter email: ");
         String email = input.next();
         while (!isValid(email)) {
@@ -99,7 +109,7 @@ public class MenuUser {
             email = input.next();
         }
 
-        repositoryUser.addUser(username, password, firstName, lastName, email);
+        repositoryUser.addUser(username, password, firstName, lastName, dateOfBirth, email);
     }
 
     private boolean isValid(String email) {
