@@ -18,7 +18,7 @@ public class MenuUser {
         System.out.println("1: List all users");
         System.out.println("2: Update email");
         System.out.println("3: Add new user");
-        System.out.println("4: ");
+        System.out.println("4: Get user info by ID");
         System.out.println("5: ");
         System.out.println("100 - Return to Main Menu");
         System.out.println("\n====================================================");
@@ -40,9 +40,9 @@ public class MenuUser {
                 case 3:
                     menuAddNewUser(input);
                     break;
-//                case 4:
-//                    menuListActiveAndNotActiveCustomers();
-//                    break;
+                case 4:
+                    menuUserInfoById(input);
+                    break;
 //                case 5:
 //                    menuUpdatePhoneNumberByCustomerId(input);
 //                    break;
@@ -58,6 +58,13 @@ public class MenuUser {
     }
 
 
+    private void menuUserInfoById(Scanner input) {
+        System.out.print("Enter the user ID whose info you want to see: ");
+        int userId = input.nextInt();
+
+        User user = repositoryUser.findById(userId);
+        System.out.println(user.toString());
+    }
 
     private void menuListAllUsers(Scanner input) {
         List<User> listUser = repositoryUser.listAllUsers();
@@ -93,7 +100,7 @@ public class MenuUser {
             lastName = input.next();
         }
 
-        System.out.print("Enter date of birth (YYYY/MM/DD): ");
+        System.out.print("Enter date of birth (YYYY-MM-DD): ");
         Date dateOfBirth = null;
         try {
             dateOfBirth = Date.valueOf(input.next());
@@ -121,12 +128,13 @@ public class MenuUser {
         System.out.println("Type the user ID");
         int id = input.nextInt();
         String name = repositoryUser.findById(id).getFirstName();
+        String oldEmail = repositoryUser.findById(id).getEmail();
         User result = repositoryUser.findById(id);
         if (result == null) {
             System.out.println("\nUser not found\n");
             menuOptions(input);
         } else {
-            System.out.println("Type the new email for " + name);
+            System.out.println("Type the new email for " + name + ", current email is " + oldEmail);
             String newStatus = input.next();
             repositoryUser.updateUserEmail(id, newStatus);
         }

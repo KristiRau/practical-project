@@ -1,6 +1,9 @@
 package menu;
 
+
 import model.BookReviewByUser;
+import persistence.RepositoryBook;
+import persistence.RepositoryUser;
 import persistence.RepositoryUserReview;
 
 import java.util.List;
@@ -9,14 +12,16 @@ import java.util.Scanner;
 public class MenuUserReview {
 
     RepositoryUserReview repositoryUserReview = new RepositoryUserReview();
+    RepositoryUser repositoryUser = new RepositoryUser();
+    RepositoryBook repositoryBook = new RepositoryBook();
 
     private int menuOptions(Scanner input) {
         System.out.println("\n====================================================");
         System.out.println("Select the submenu option: ");
         System.out.println();
         System.out.println("1: Reviews by user");
-        System.out.println("2: ");
-        System.out.println("3: ");
+        System.out.println("2: Total number of reviews by book");
+        System.out.println("3: Total number of reviews by user");
         System.out.println("4: ");
         System.out.println("5: ");
         System.out.println("100 - Return to Main Menu");
@@ -34,11 +39,11 @@ public class MenuUserReview {
                     menuReviewsByUser(input);
                     break;
                 case 2:
-                    //menuUpdateUserEmail(input);
+                    menuListBookReviewsById(input);
                     break;
-//                case 3:
-//                    menuListActiveCustomers();
-//                    break;
+                case 3:
+                    menuListUserReviewsById(input);
+                    break;
 //                case 4:
 //                    menuListActiveAndNotActiveCustomers();
 //                    break;
@@ -68,6 +73,22 @@ public class MenuUserReview {
         } else {
             System.out.println("User has no reviews");
         }
+    }
+
+    private void menuListUserReviewsById(Scanner input) {
+        System.out.print("Enter user ID to see how many reviews he/she has: ");
+        int userId = input.nextInt();
+        String user = repositoryUser.findById(userId).getUsername();
+        System.out.println("Total number of reviews by '" + user + "': " +
+                repositoryUserReview.getTotalReviewsByUserId(userId));
+    }
+
+    private void menuListBookReviewsById(Scanner input) {
+        System.out.print("Enter book ID to see how many reviews it has: ");
+        int bookId = input.nextInt();
+        String book = repositoryBook.findById(bookId).getName();
+        System.out.println("Total number of reviews for book '" + book + "' is: " +
+                repositoryUserReview.getTotalReviewCountByBookName(bookId));
     }
 
 

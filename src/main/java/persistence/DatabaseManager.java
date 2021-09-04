@@ -24,10 +24,10 @@ public class DatabaseManager {
         String sql = "CREATE TABLE IF NOT EXISTS user_review (\n"
                 + "	user_review_id int NOT NULL AUTO_INCREMENT,\n"
                 + "	user_id INT NOT NULL,\n"
-                + "	current_book_id INT NOT NULL,\n"
+                + "	book_id INT NOT NULL,\n"
                 + "	number_of_ratings INT DEFAULT NULL,\n"
                 + " CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES user(user_id),\n"
-                + " CONSTRAINT current_book_fk FOREIGN KEY (current_book_id) REFERENCES book(book_id),\n"
+                + " CONSTRAINT current_book_fk FOREIGN KEY (book_id) REFERENCES book(book_id),\n"
                 + "	 PRIMARY KEY (user_review_id)\n"
                 + ");";
 

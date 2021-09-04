@@ -6,10 +6,12 @@ public class SubMenuOptions {
 
     private MenuUser menuUser;
     private MenuUserReview menuUserReview;
+    private MenuBook menuBook;
 
     public SubMenuOptions() {
         this.menuUser = new MenuUser();
         this.menuUserReview = new MenuUserReview();
+        this.menuBook = new MenuBook();
     }
 
     private int menuOptions(Scanner input) {
@@ -18,7 +20,7 @@ public class SubMenuOptions {
         System.out.println();
         System.out.println("1: Sub Menu - User");
         System.out.println("2: Sub Menu - User Review");
-        System.out.println("3: Sub Menu - <NAME>");
+        System.out.println("3: Sub Menu - Book");
         System.out.println("4: Sub Menu - <NAME>");
         System.out.println("100 - Quit");
         System.out.println("\n====================================================");
@@ -39,6 +41,7 @@ public class SubMenuOptions {
                     this.menuUserReview.menuChoice(input);
                     break;
                 case 3:
+                    this.menuBook.menuChoice(input);
                     break;
                 case 4:
                     break;
